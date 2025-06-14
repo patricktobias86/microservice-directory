@@ -1,0 +1,8 @@
+[build]
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/base64"
+  to = "/.netlify/functions/convert-base64"
+  status = 200
+  methods = ["GET", "POST", "OPTIONS"]
