@@ -2,6 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Microservice Directory",
+    "description": "Small free APIs for anyone to use, hosted on Netlify.",
     "version": "1.0.0"
   },
   "servers": {
