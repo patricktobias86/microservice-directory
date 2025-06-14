@@ -1,6 +1,6 @@
 {
-  "name": "base64-api",
-  "version": "1.0.0",
+  "name": "microservice-directory",
+  "version": "0.0.1",
   "description": "A simple Netlify serverless function that encodes input name into Base64.",
   "main": "netlify/functions/convert-base64.js",
   "scripts": {

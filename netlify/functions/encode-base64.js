@@ -1,4 +1,4 @@
-// netlify/functions/convert-base64.js
+// netlify/functions/encode-base64.js
 
 /**
  * A Netlify serverless function that reads a JSON payload with a "name" field
