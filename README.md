@@ -1,6 +1,10 @@
-# Base64 API
+# Microservice Directory
 
-A simple serverless API hosted on Netlify that takes a JSON input with a `name` field and returns the same object with an added `base64` field containing the Base64 (UTF-8) encoding of `name`.
+A set of simple serverless APIs hosted on Netlify.
+
+encode-Base64 takes a JSON input with a `name` field and returns the same object with an added `base64` field containing the Base64 (UTF-8) encoding of `name`.
+
+This project includes an automated `index.html` generator that lists all Functions (APIs). Run `npm run generate-index` or let Netlify build do it automatically.
 
 ## Prerequisites
 
@@ -11,8 +15,8 @@ A simple serverless API hosted on Netlify that takes a JSON input with a `name` 
 
 1. Clone the repo:
    ```bash
-   git clone https://github.com/your-username/base64-api.git
-   cd base64-api
+   git clone https://github.com/patricktobias86/microservice-directory.git
+   cd microservice-directory
    ```
 
 2. Install dependencies:
@@ -20,20 +24,22 @@ A simple serverless API hosted on Netlify that takes a JSON input with a `name` 
    npm install
    ```
 
-3. Run locally:
+3. Generate the API index (will run automatically on Netlify build):
+   ```bash
+   npm run generate-index
+   ```
+
+4. Run locally:
    ```bash
    netlify dev
    ```
-   The function will be available at:
-   ```
-   http://localhost:8888/base64
-   ```
+   - API index page: `http://localhost:8888/index.html`
 
 ## Usage
 
 Send a `POST` request with a JSON body:
 ```bash
-curl -X POST http://localhost:8888/base64 \
+curl -X POST http://localhost:8888/enode-base64 \
   -H "Content-Type: application/json" \
   -d '{"name":"test"}'
 ```
@@ -45,12 +51,14 @@ Response:
 
 ## Deployment
 
+Netlify will automatically generate and include an `index.html` listing all functions.
+
 1. Login to Netlify:
    ```bash
    netlify login
    ```
 
-2. Initialize the project (if first time):
+2. Initialize the project:
    ```bash
    netlify init
    ```

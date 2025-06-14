@@ -1,8 +1,9 @@
 [build]
   functions = "netlify/functions"
+  command = "npm run generate-index"
 
 [[redirects]]
-  from = "/base64"
-  to = "/.netlify/functions/convert-base64"
+  from = "/encode-base64"
+  to = "/.netlify/functions/encode-base64"
   status = 200
   methods = ["GET", "POST", "OPTIONS"]

@@ -2,8 +2,9 @@
   "name": "microservice-directory",
   "version": "0.0.1",
   "description": "A simple Netlify serverless function that encodes input name into Base64.",
-  "main": "netlify/functions/convert-base64.js",
+  "main": "scripts/generate-index.js",
   "scripts": {
+    "generate-index": "node scripts/generate-index.js",
     "start": "netlify dev",
     "deploy": "netlify deploy --prod"
   },
