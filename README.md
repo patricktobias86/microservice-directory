@@ -4,7 +4,7 @@ A set of simple serverless APIs hosted on Netlify.
 
 `encode-base64` takes a JSON input with a `name` field and returns the same object with an added `base64` field containing the Base64 (UTF-8) encoding of `name`.
 
-This project includes an automated `index.html` generator that lists all Functions (APIs). Run `npm run generate-index` or let Netlify build do it automatically.
+This project includes an automated `index.html` generator that outputs a simple OpenAPI specification listing all Functions (APIs). Run `npm run generate-index` or let Netlify build do it automatically.
 
 ## Prerequisites
 
@@ -51,7 +51,7 @@ Response:
 
 ## Deployment
 
-Netlify will automatically generate and include an `index.html` listing all functions.
+Netlify will automatically generate and include an `index.html` containing an OpenAPI definition of all functions.
 
 1. Login to Netlify:
    ```bash
