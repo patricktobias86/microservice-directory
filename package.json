@@ -1,7 +1,7 @@
 {
   "name": "microservice-directory",
   "version": "0.0.1",
-  "description": "A simple Netlify serverless function that encodes input name into Base64.",
+  "description": "Small free APIs for anyone to use, hosted on Netlify.",
   "main": "scripts/generate-index.js",
   "scripts": {
     "generate-index": "node scripts/generate-index.js",
