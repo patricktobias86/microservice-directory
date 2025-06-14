@@ -19,11 +19,14 @@ const spec = {
   openapi: '3.0.0',
   info: {
     title: 'Microservice Directory',
+    description: 'Small free APIs for anyone to use, hosted on Netlify.',
     version: '1.0.0'
+  },
+  servers: {
+    url: 'https://microservice-directory.netlify.app'
   },
   paths: {}
 };
-
 
 files.forEach(file => {
   const content = fs.readFileSync(path.join(functionsDir, file), 'utf8');
