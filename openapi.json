@@ -1,0 +1,84 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Microservice Directory",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/decode-base64": {
+      "post": {
+        "description": "Reads a JSON payload with a \"base64\" field and returns the original payload",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Invalid request"
+          }
+        }
+      }
+    },
+    "/decode-url": {
+      "post": {
+        "description": "Decodes a URL encoded string from the \"encoded\" field and returns it as \"decoded\".",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Invalid request"
+          }
+        }
+      }
+    },
+    "/encode-base64": {
+      "post": {
+        "description": "A Netlify serverless function that reads a JSON payload with a \"name\" field",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Invalid request"
+          }
+        }
+      }
+    },
+    "/encode-url": {
+      "post": {
+        "description": "URL encodes the provided \"text\" field and returns it as \"encoded\".",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Invalid request"
+          }
+        }
+      }
+    },
+    "/generate-uuid": {
+      "get": {
+        "description": "Generates a random UUID v4 and returns it in a JSON response.",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      }
+    },
+    "/hash-md5": {
+      "post": {
+        "description": "Returns the MD5 hash of a given \"text\" field from the JSON payload.",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Invalid request"
+          }
+        }
+      }
+    }
+  }
+}
