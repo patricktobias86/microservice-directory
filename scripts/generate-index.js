@@ -10,17 +10,16 @@ const indexPath = path.join(rootDir, 'index.html');
 // Read function files
 const files = fs.readdirSync(functionsDir).filter(f => f.endsWith('.js'));
 
-// Generate HTML
-let html = `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Microservice Directory</title>
-</head>
-<body>
-<h1>API Index</h1>
-<ul>
-`;
+
+// Prepare basic OpenAPI structure
+const spec = {
+  openapi: '3.0.0',
+  info: {
+    title: 'Microservice Directory',
+    version: '1.0.0'
+  },
+  paths: {}
+};
 
 
  files.forEach(file => {
@@ -34,17 +33,16 @@ let html = `<!DOCTYPE html>
      desc = lines.find(line => line && !line.startsWith('@')) || '';
    }
    const name = path.basename(file, '.js');
-   // Map function name "encode-base64" to the friendly route "/encode-base64"
    const urlPath = name === 'encode-base64'
      ? '/encode-base64'
      : `/.netlify/functions/${name}`;
-   html += `  <li><strong>${urlPath}</strong>: ${desc}</li>\n`;
- });
+   spec.paths[urlPath] = {
+     post: {
+       description: desc
+     }
+   };
+});
 
-html += `</ul>
-</body>
-</html>`;
-
-// Write index.html
-fs.writeFileSync(indexPath, html);
-console.log('Generated index.html with', files.length, 'endpoints.');
+// Write index.html containing the OpenAPI JSON
+fs.writeFileSync(indexPath, JSON.stringify(spec, null, 2));
+console.log('Generated index.html with', files.length, 'endpoints in OpenAPI format.');

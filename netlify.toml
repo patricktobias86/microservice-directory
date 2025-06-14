@@ -7,3 +7,33 @@
   to = "/.netlify/functions/encode-base64"
   status = 200
   methods = ["GET", "POST", "OPTIONS"]
+
+[[redirects]]
+  from = "/decode-base64"
+  to = "/.netlify/functions/decode-base64"
+  status = 200
+  methods = ["GET", "POST", "OPTIONS"]
+
+[[redirects]]
+  from = "/hash-md5"
+  to = "/.netlify/functions/hash-md5"
+  status = 200
+  methods = ["GET", "POST", "OPTIONS"]
+
+[[redirects]]
+  from = "/encode-url"
+  to = "/.netlify/functions/encode-url"
+  status = 200
+  methods = ["GET", "POST", "OPTIONS"]
+
+[[redirects]]
+  from = "/decode-url"
+  to = "/.netlify/functions/decode-url"
+  status = 200
+  methods = ["GET", "POST", "OPTIONS"]
+
+[[redirects]]
+  from = "/generate-uuid"
+  to = "/.netlify/functions/generate-uuid"
+  status = 200
+  methods = ["GET", "POST", "OPTIONS"]
