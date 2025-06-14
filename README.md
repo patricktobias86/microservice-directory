@@ -2,7 +2,7 @@
 
 A set of simple serverless APIs hosted on Netlify.
 
-encode-Base64 takes a JSON input with a `name` field and returns the same object with an added `base64` field containing the Base64 (UTF-8) encoding of `name`.
+`encode-base64` takes a JSON input with a `name` field and returns the same object with an added `base64` field containing the Base64 (UTF-8) encoding of `name`.
 
 This project includes an automated `index.html` generator that lists all Functions (APIs). Run `npm run generate-index` or let Netlify build do it automatically.
 
@@ -33,13 +33,13 @@ This project includes an automated `index.html` generator that lists all Functio
    ```bash
    netlify dev
    ```
-   - API index page: `http://localhost:8888/index.html`
+   - API index page: `http://localhost:8888/`
 
 ## Usage
 
 Send a `POST` request with a JSON body:
 ```bash
-curl -X POST http://localhost:8888/enode-base64 \
+curl -X POST http://localhost:8888/encode-base64 \
   -H "Content-Type: application/json" \
   -d '{"name":"test"}'
 ```

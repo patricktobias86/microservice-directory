@@ -22,16 +22,24 @@ let html = `<!DOCTYPE html>
 <ul>
 `;
 
-files.forEach(file => {
-  const content = fs.readFileSync(path.join(functionsDir, file), 'utf8');
-  const match = content.match(/\/\*\*([\s\S]*?)\*\//);
-  let desc = '';
-  if (match) {
-    const lines = match[1].split('\n').map(l => l.replace(/^\s*\*\s?/, '').trim());
-    desc = lines.find(line => line && !line.startsWith('@')) || '';
-  }
-  const name = path.basename(file, '.js');
-});
+
+ files.forEach(file => {
+   const content = fs.readFileSync(path.join(functionsDir, file), 'utf8');
+   const match = content.match(/\/\*\*([\s\S]*?)\*\//);
+   let desc = '';
+   if (match) {
+     const lines = match[1]
+       .split('\n')
+       .map(l => l.replace(/^\s*\*\s?/, '').trim());
+     desc = lines.find(line => line && !line.startsWith('@')) || '';
+   }
+   const name = path.basename(file, '.js');
+   // Map function name "encode-base64" to the friendly route "/encode-base64"
+   const urlPath = name === 'encode-base64'
+     ? '/encode-base64'
+     : `/.netlify/functions/${name}`;
+   html += `  <li><strong>${urlPath}</strong>: ${desc}</li>\n`;
+ });
 
 html += `</ul>
 </body>
