@@ -4,6 +4,9 @@
     "title": "Microservice Directory",
     "version": "1.0.0"
   },
+  "servers": {
+    "url": "https://microservice-directory.netlify.app"
+  },
   "paths": {
     "/decode-base64": {
       "post": {
