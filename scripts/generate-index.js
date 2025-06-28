@@ -16,16 +16,19 @@ const files = fs.readdirSync(functionsDir).filter(f => f.endsWith('.js'));
 
 // Prepare basic OpenAPI structure
 const spec = {
-  openapi: '3.0.0',
-  info: {
-    title: 'Microservice Directory',
-    description: 'Small free APIs for anyone to use, hosted on Netlify.',
-    version: '1.0.0'
-  },
-  servers: {
-    url: 'https://microservice-directory.netlify.app'
-  },
-  paths: {}
+    openapi: "3.0.0",
+    info: {
+        title: "Microservice Directory",
+        description: "Small free APIs for anyone to use, hosted on Netlify.",
+        version: "1.0.0"
+    },
+    servers: [
+        {
+            url: "https://microservice-directory.netlify.app",
+            description: "Production server"
+        }
+    ],
+    paths: {}
 };
 
 files.forEach(file => {
