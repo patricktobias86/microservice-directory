@@ -2,9 +2,7 @@
   "name": "microservice-directory",
   "version": "0.0.1",
   "description": "Small free APIs for anyone to use, hosted on Netlify.",
-  "main": "scripts/generate-index.js",
   "scripts": {
-    "generate-index": "node scripts/generate-index.js",
     "start": "netlify dev",
     "deploy": "netlify deploy --prod"
   },

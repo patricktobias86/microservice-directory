@@ -1,6 +1,6 @@
 [build]
   functions = "netlify/functions"
-  command = "npm run generate-index"
+  command = "npx @openapitools/openapi-generator-cli generate -i index.json -g html2 -o docs-temp && cp docs-temp/index.html index.html && rm -rf docs-temp"
 
 [[redirects]]
   from = "/encode-base64"
