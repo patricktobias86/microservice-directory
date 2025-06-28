@@ -1,6 +1,6 @@
 {
   "name": "microservice-directory",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Small free APIs for anyone to use, hosted on Netlify.",
   "scripts": {
     "start": "netlify dev",
@@ -10,6 +10,6 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "@openapitools/openapi-generator-cli": "^2.20.2"
+    "@openapitools/openapi-generator-cli": "^2.21.0"
   }
 }
