@@ -8,7 +8,8 @@ The `index.json` file defines the API using the OpenAPI specification. Documenta
 
 ## Prerequisites
 
-- Node.js (>= 14)
+- Node.js (>= 20)
+- Java 21
 - `netlify-cli` installed globally: `npm install -g netlify-cli`
 
 ## Setup
@@ -52,6 +53,7 @@ Response:
 ## Deployment
 
 Netlify will automatically generate and include an `index.html` containing an OpenAPI definition of all functions.
+The build environment uses Node.js 20 and Java 21 to run the OpenAPI generator.
 
 1. Login to Netlify:
    ```bash
