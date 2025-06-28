@@ -4,11 +4,12 @@ A set of simple serverless APIs hosted on Netlify.
 
 `encode-base64` takes a JSON input with a `name` field and returns the same object with an added `base64` field containing the Base64 (UTF-8) encoding of `name`.
 
-This project generates an `openapi.json` file for all functions and uses **openapi-generator** to create `index.html`. Run `npm run generate-index` or let Netlify build do it automatically.
+The `index.json` file defines the API using the OpenAPI specification. Documentation (`index.html`) is generated from this file using **openapi-generator**.
 
 ## Prerequisites
 
-- Node.js (>= 14)
+- Node.js (>= 20)
+- Java 17
 - `netlify-cli` installed globally: `npm install -g netlify-cli`
 
 ## Setup
@@ -24,15 +25,15 @@ This project generates an `openapi.json` file for all functions and uses **opena
    npm install
    ```
 
-3. Generate the API index (will run automatically on Netlify build):
-   ```bash
-   npm run generate-index
-   ```
+To update the documentation after modifying `index.json` run:
+```bash
+npx @openapitools/openapi-generator-cli generate -i index.json -g html2 -o docs-temp && cp docs-temp/index.html index.html && rm -rf docs-temp
+```
 
-4. Run locally:
-   ```bash
-   netlify dev
-   ```
+3. Run locally:
+  ```bash
+  netlify dev
+  ```
    - API index page: `http://localhost:8888/`
 
 ## Usage
@@ -52,6 +53,7 @@ Response:
 ## Deployment
 
 Netlify will automatically generate and include an `index.html` containing an OpenAPI definition of all functions.
+The build environment uses Node.js 20 and Java 17 to run the OpenAPI generator.
 
 1. Login to Netlify:
    ```bash
