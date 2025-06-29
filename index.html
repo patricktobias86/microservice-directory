@@ -2,60 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Microservice Directory Demo</title>
-  <!-- Load SwaggerClient from unpkg -->
-  <script src="https://unpkg.com/swagger-client"></script>
-  <script>
-    // 1) Point at your hosted OpenAPI spec (adjust if needed)
-    const specUrl = 'https://microservice-directory.netlify.app/openapi.json';
-
-    // 2) Create the client
-    new SwaggerClient(specUrl)
-      .then(client => {
-        console.log('✅ OpenAPI spec loaded');
-
-        // 3) Example: Base64-encode the string "Hello, world!"
-        client.apis.encode.encodeBase64({ 
-          body: { value: 'Hello, world!' } 
-        })
-        .then(res => {
-          console.log('🔐 encodeBase64 →', res.body.encoded);
-        })
-        .catch(err => console.error('❌ encodeBase64 failed:', err));
-
-        // 4) Example: Base64-decode the result back
-        client.apis.decode.decodeBase64({ 
-          body: { value: 'SGVsbG8sIHdvcmxkIQ==' } 
-        })
-        .then(res => {
-          console.log('🔓 decodeBase64 →', res.body.decoded);
-        })
-        .catch(err => console.error('❌ decodeBase64 failed:', err));
-
-        // 5) Example: Compute MD5 hash of "hello"
-        client.apis.utilities.hashMd5({ 
-          body: { text: 'hello' } 
-        })
-        .then(res => {
-          console.log('🛡️ hashMd5 →', res.body.hash);
-        })
-        .catch(err => console.error('❌ hashMd5 failed:', err));
-
-        // 6) Example: Generate a random UUID
-        client.apis.utilities.generateUuid()
-        .then(res => {
-          console.log('🔢 generateUuid →', res.body.uuid);
-        })
-        .catch(err => console.error('❌ generateUuid failed:', err));
-
-      })
-      .catch(err => {
-        console.error('🚫 Failed to load OpenAPI spec:', err);
-      });
-  </script>
+  <title>Microservice Directory API Docs</title>
+  <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist/swagger-ui.css">
 </head>
 <body>
-  <h1>Microservice Directory Demo</h1>
-  <p>Open your browser’s dev tools console to see the API calls and results.</p>
+  <div id="swagger-ui"></div>
+  <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"></script>
+  <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js"></script>
+  <script>
+    window.onload = () => {
+      SwaggerUIBundle({
+        url: 'swagger.json',
+        dom_id: '#swagger-ui',
+        presets: [
+          SwaggerUIBundle.presets.apis,
+          SwaggerUIStandalonePreset
+        ],
+        layout: 'StandaloneLayout'
+      });
+    };
+  </script>
 </body>
 </html>
