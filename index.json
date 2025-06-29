@@ -1,201 +1,310 @@
 {
-    "openapi": "3.0.0",
-    "info": {
-        "title": "Microservice Directory",
-        "description": "Small free APIs for anyone to use, hosted on Netlify.",
-        "version": "1.0.0"
-    },
-    "servers": [
-        {
-            "url": "https://microservice-directory.netlify.app",
-            "description": "Production server"
-        }
-    ],
-    "paths": {
-        "/decode-base64": {
-            "post": {
-                "description": "Reads a JSON payload with a \"base64\" field and returns the original payload",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "base64": {
-                                        "type": "string",
-                                        "example": "dGVzdA=="
-                                    }
-                                },
-                                "required": [
-                                    "base64"
-                                ]
-                            },
-                            "example": {
-                                "base64": "dGVzdA=="
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Successful response"
-                    },
-                    "400": {
-                        "description": "Invalid request"
-                    }
-                }
-            }
-        },
-        "/decode-url": {
-            "post": {
-                "description": "Decodes a URL encoded string from the \"encoded\" field and returns it as \"decoded\".",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "encoded": {
-                                        "type": "string",
-                                        "example": "https%3A%2F%2Fmicroservice-directory.netlify.app"
-                                    }
-                                },
-                                "required": [
-                                    "encoded"
-                                ]
-                            },
-                            "example": {
-                                "encoded": "https%3A%2F%2Fmicroservice-directory.netlify.app"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Successful response"
-                    },
-                    "400": {
-                        "description": "Invalid request"
-                    }
-                }
-            }
-        },
-        "/encode-base64": {
-            "post": {
-                "description": "A Netlify serverless function that reads a JSON payload with a \"name\" field",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "name": {
-                                        "type": "string",
-                                        "example": "test"
-                                    }
-                                },
-                                "required": [
-                                    "name"
-                                ]
-                            },
-                            "example": {
-                                "name": "test"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Successful response"
-                    },
-                    "400": {
-                        "description": "Invalid request"
-                    }
-                }
-            }
-        },
-        "/encode-url": {
-            "post": {
-                "description": "URL encodes the provided \"text\" field and returns it as \"encoded\".",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "text": {
-                                        "type": "string",
-                                        "example": "https://microservice-directory.netlify.app"
-                                    }
-                                },
-                                "required": [
-                                    "text"
-                                ]
-                            },
-                            "example": {
-                                "text": "https://microservice-directory.netlify.app"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Successful response"
-                    },
-                    "400": {
-                        "description": "Invalid request"
-                    }
-                }
-            }
-        },
-        "/generate-uuid": {
-            "get": {
-                "description": "Generates a random UUID v4 and returns it in a JSON response.",
-                "responses": {
-                    "200": {
-                        "description": "Successful response"
-                    }
-                }
-            }
-        },
-        "/hash-md5": {
-            "post": {
-                "description": "Returns the MD5 hash of a given \"text\" field from the JSON payload.",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "text": {
-                                        "type": "string",
-                                        "example": "https://microservice-directory.netlify.app"
-                                    }
-                                },
-                                "required": [
-                                    "text"
-                                ]
-                            },
-                            "example": {
-                                "text": "https://microservice-directory.netlify.app"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Successful response"
-                    },
-                    "400": {
-                        "description": "Invalid request"
-                    }
-                }
-            }
-        }
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Microservice Directory",
+    "description": "Small free APIs for anyone to use, hosted on Netlify.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://microservice-directory.netlify.app",
+      "description": "Production server"
     }
+  ],
+  "tags": [
+    { "name": "encode", "description": "Encoding endpoints" },
+    { "name": "decode", "description": "Decoding endpoints" },
+    { "name": "utilities", "description": "Utility endpoints" }
+  ],
+  "paths": {
+    "/encode/base64": {
+      "post": {
+        "tags": ["encode"],
+        "summary": "Encode a string to Base64",
+        "operationId": "encodeBase64",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Base64EncodeRequest" },
+              "example": { "value": "test" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Base64 encoded string",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Base64EncodeResponse" },
+                "example": { "encoded": "dGVzdA==" }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "429": { "$ref": "#/components/responses/TooManyRequests" }
+        }
+      }
+    },
+    "/decode/base64": {
+      "post": {
+        "tags": ["decode"],
+        "summary": "Decode a Base64 string",
+        "operationId": "decodeBase64",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Base64DecodeRequest" },
+              "example": { "value": "dGVzdA==" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Decoded string",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Base64DecodeResponse" },
+                "example": { "decoded": "test" }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "429": { "$ref": "#/components/responses/TooManyRequests" }
+        }
+      }
+    },
+    "/encode/url": {
+      "post": {
+        "tags": ["encode"],
+        "summary": "URL-encode the provided text",
+        "operationId": "encodeUrl",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UrlEncodeRequest" },
+              "example": { "text": "https://microservice-directory.netlify.app" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Encoded URL",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/UrlEncodeResponse" },
+                "example": { "encoded": "https%3A%2F%2Fmicroservice-directory.netlify.app" }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "429": { "$ref": "#/components/responses/TooManyRequests" }
+        }
+      }
+    },
+    "/decode/url": {
+      "post": {
+        "tags": ["decode"],
+        "summary": "URL-decode the provided string",
+        "operationId": "decodeUrl",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UrlDecodeRequest" },
+              "example": { "encoded": "https%3A%2F%2Fmicroservice-directory.netlify.app" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Decoded URL",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/UrlDecodeResponse" },
+                "example": { "decoded": "https://microservice-directory.netlify.app" }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "429": { "$ref": "#/components/responses/TooManyRequests" }
+        }
+      }
+    },
+    "/utilities/hash/md5": {
+      "post": {
+        "tags": ["utilities"],
+        "summary": "Compute MD5 hash of a text string",
+        "operationId": "hashMd5",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Md5HashRequest" },
+              "example": { "text": "hello" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "MD5 hash of the input",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Md5HashResponse" },
+                "example": { "hash": "5d41402abc4b2a76b9719d911017c592" }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "429": { "$ref": "#/components/responses/TooManyRequests" }
+        }
+      }
+    },
+    "/utilities/uuid": {
+      "get": {
+        "tags": ["utilities"],
+        "summary": "Generate a random UUID v4",
+        "operationId": "generateUuid",
+        "responses": {
+          "200": {
+            "description": "A newly generated UUID",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/UuidResponse" },
+                "example": { "uuid": "3fa85f64-5717-4562-b3fc-2c963f66afa6" }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Base64EncodeRequest": {
+        "type": "object",
+        "properties": {
+          "value": { "type": "string", "example": "test" }
+        },
+        "required": ["value"]
+      },
+      "Base64EncodeResponse": {
+        "type": "object",
+        "properties": {
+          "encoded": { "type": "string", "example": "dGVzdA==" }
+        },
+        "required": ["encoded"]
+      },
+      "Base64DecodeRequest": {
+        "type": "object",
+        "properties": {
+          "value": { "type": "string", "example": "dGVzdA==" }
+        },
+        "required": ["value"]
+      },
+      "Base64DecodeResponse": {
+        "type": "object",
+        "properties": {
+          "decoded": { "type": "string", "example": "test" }
+        },
+        "required": ["decoded"]
+      },
+      "UrlEncodeRequest": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "example": "https://microservice-directory.netlify.app"
+          }
+        },
+        "required": ["text"]
+      },
+      "UrlEncodeResponse": {
+        "type": "object",
+        "properties": {
+          "encoded": {
+            "type": "string",
+            "example": "https%3A%2F%2Fmicroservice-directory.netlify.app"
+          }
+        },
+        "required": ["encoded"]
+      },
+      "UrlDecodeRequest": {
+        "type": "object",
+        "properties": {
+          "encoded": {
+            "type": "string",
+            "example": "https%3A%2F%2Fmicroservice-directory.netlify.app"
+          }
+        },
+        "required": ["encoded"]
+      },
+      "UrlDecodeResponse": {
+        "type": "object",
+        "properties": {
+          "decoded": {
+            "type": "string",
+            "example": "https://microservice-directory.netlify.app"
+          }
+        },
+        "required": ["decoded"]
+      },
+      "Md5HashRequest": {
+        "type": "object",
+        "properties": {
+          "text": { "type": "string", "example": "hello" }
+        },
+        "required": ["text"]
+      },
+      "Md5HashResponse": {
+        "type": "object",
+        "properties": {
+          "hash": {
+            "type": "string",
+            "example": "5d41402abc4b2a76b9719d911017c592"
+          }
+        },
+        "required": ["hash"]
+      },
+      "UuidResponse": {
+        "type": "object",
+        "properties": {
+          "uuid": {
+            "type": "string",
+            "format": "uuid",
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+          }
+        },
+        "required": ["uuid"]
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "code": { "type": "integer", "example": 400 },
+          "message": { "type": "string", "example": "Bad request" }
+        },
+        "required": ["code", "message"]
+      }
+    },
+    "responses": {
+      "BadRequest": {
+        "description": "Invalid request",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+          }
+        }
+      },
+      "TooManyRequests": {
+        "description": "Too many requests",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+          }
+        }
+      }
+    }
+  }
 }
