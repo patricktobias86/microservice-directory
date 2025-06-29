@@ -24,12 +24,7 @@ This project uses a `swagger.json` file for all functions and loads Swagger UI f
    npm install
    ```
 
-3. Generate the API index (will run automatically on Netlify build):
-   ```bash
-   npm run generate-index
-   ```
-
-4. Run locally:
+3. Run locally:
    ```bash
    netlify dev
    ```
@@ -48,22 +43,3 @@ Response:
 ```json
 {"name":"test","base64":"dGVzdA=="}
 ```
-
-## Deployment
-
-Netlify will automatically generate and include an `index.html` containing Swagger UI for all functions.
-
-1. Login to Netlify:
-   ```bash
-   netlify login
-   ```
-
-2. Initialize the project:
-   ```bash
-   netlify init
-   ```
-
-3. Deploy:
-   ```bash
-   netlify deploy --prod
-   ```
