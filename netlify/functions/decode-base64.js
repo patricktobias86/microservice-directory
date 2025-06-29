@@ -1,21 +1,20 @@
 // netlify/functions/decode-base64.js
 /**
- * Reads a JSON payload with a "base64" field and returns the original payload
- * with an added "decoded" field containing the UTF-8 string represented by the
- * Base64 value.
+ * Reads a JSON payload with a "value" field containing a Base64 string and
+ * returns a JSON object with a "decoded" field containing the UTF-8 value.
  */
 exports.handler = async function(event, context) {
   try {
     const data = JSON.parse(event.body || '{}');
-    const encoded = data.base64;
+    const encoded = data.value;
     if (!encoded) {
       return {
         statusCode: 400,
-        body: JSON.stringify({ error: 'Missing "base64" field in request body.' })
+        body: JSON.stringify({ error: 'Missing "value" field in request body.' })
       };
     }
     const decoded = Buffer.from(encoded, 'base64').toString('utf8');
-    const response = { ...data, decoded };
+    const response = { decoded };
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json' },

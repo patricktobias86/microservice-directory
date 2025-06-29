@@ -14,8 +14,8 @@ exports.handler = async function(event, context) {
         body: JSON.stringify({ error: 'Missing "text" field in request body.' })
       };
     }
-    const md5 = crypto.createHash('md5').update(text, 'utf8').digest('hex');
-    const response = { ...data, md5 };
+    const hash = crypto.createHash('md5').update(text, 'utf8').digest('hex');
+    const response = { hash };
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json' },

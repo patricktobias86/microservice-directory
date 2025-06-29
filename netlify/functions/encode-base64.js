@@ -1,22 +1,22 @@
 // netlify/functions/encode-base64.js
 
 /**
- * A Netlify serverless function that reads a JSON payload with a "name" field
- * and returns the original payload with an added "base64" field containing the
- * Base64 (UTF-8) encoding of the "name" value.
+ * A Netlify serverless function that reads a JSON payload with a "value" field
+ * and returns a JSON object with an "encoded" field containing the Base64
+ * (UTF-8) encoding of that value.
  */
 exports.handler = async function(event, context) {
   try {
     const data = JSON.parse(event.body || '{}');
-    const name = data.name;
-    if (!name) {
+    const value = data.value;
+    if (!value) {
       return {
         statusCode: 400,
-        body: JSON.stringify({ error: 'Missing "name" field in request body.' }),
+        body: JSON.stringify({ error: 'Missing "value" field in request body.' }),
       };
     }
-    const base64 = Buffer.from(name, 'utf8').toString('base64');
-    const response = { ...data, base64 };
+    const encoded = Buffer.from(value, 'utf8').toString('base64');
+    const response = { encoded };
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json' },
