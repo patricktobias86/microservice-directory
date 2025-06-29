@@ -2,7 +2,16 @@
 /**
  * Decodes a URL encoded string from the "encoded" field and returns it as "decoded".
  */
+const checkRateLimit = require('./rate-limit');
+
 exports.handler = async function(event, context) {
+  if (!checkRateLimit()) {
+    return {
+      statusCode: 429,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ error: 'Too many requests' })
+    };
+  }
   try {
     const data = JSON.parse(event.body || '{}');
     const encoded = data.encoded;

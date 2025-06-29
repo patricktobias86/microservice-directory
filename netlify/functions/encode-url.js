@@ -2,7 +2,16 @@
 /**
  * URL encodes the provided "text" field and returns it as "encoded".
  */
+const checkRateLimit = require('./rate-limit');
+
 exports.handler = async function(event, context) {
+  if (!checkRateLimit()) {
+    return {
+      statusCode: 429,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ error: 'Too many requests' })
+    };
+  }
   try {
     const data = JSON.parse(event.body || '{}');
     const text = data.text;

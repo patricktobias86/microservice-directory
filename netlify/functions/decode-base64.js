@@ -3,7 +3,16 @@
  * Reads a JSON payload with a "value" field containing a Base64 string and
  * returns a JSON object with a "decoded" field containing the UTF-8 value.
  */
+const checkRateLimit = require('./rate-limit');
+
 exports.handler = async function(event, context) {
+  if (!checkRateLimit()) {
+    return {
+      statusCode: 429,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ error: 'Too many requests' })
+    };
+  }
   try {
     const data = JSON.parse(event.body || '{}');
     const encoded = data.value;
