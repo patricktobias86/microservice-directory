@@ -14,8 +14,8 @@ files[] = {"id":"27658409-7eb66284-1f37-4d97-b5e1-662bb67c289c","path":"Collecti
 [config.relations.collections.metaData]
 
 [config.relations.apiDefinition]
-files[] = {"path":"index.json","metaData":{}}
+files[] = {"path":"swagger.json","metaData":{}}
 
 [config.relations.apiDefinition.metaData]
-type = openapi:3
-rootFiles[] = index.json
+type = swagger:2
+rootFiles[] = swagger.json

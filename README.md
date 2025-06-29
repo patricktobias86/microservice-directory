@@ -4,7 +4,7 @@ A set of simple serverless APIs hosted on Netlify.
 
 `encode-base64` takes a JSON input with a `name` field and returns the same object with an added `base64` field containing the Base64 (UTF-8) encoding of `name`.
 
-This project generates an `openapi.json` file for all functions and uses **openapi-generator** to create `index.html`. Run `npm run generate-index` or let Netlify build do it automatically.
+This project uses a `swagger.json` file for all functions and loads Swagger UI from unpkg via `index.html`.
 
 ## Prerequisites
 
@@ -51,7 +51,7 @@ Response:
 
 ## Deployment
 
-Netlify will automatically generate and include an `index.html` containing an OpenAPI definition of all functions.
+Netlify will automatically generate and include an `index.html` containing Swagger UI for all functions.
 
 1. Login to Netlify:
    ```bash
