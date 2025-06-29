@@ -2,7 +2,7 @@
 
 A set of simple serverless APIs hosted on Netlify.
 
-`encode-base64` takes a JSON input with a `name` field and returns the same object with an added `base64` field containing the Base64 (UTF-8) encoding of `name`.
+`/encode/base64` takes a JSON input with a `value` field and returns a response with an `encoded` field containing the Base64 (UTF-8) encoding of that value.
 
 This project uses a `swagger.json` file for all functions and loads Swagger UI from unpkg via `index.html`.
 
@@ -34,12 +34,12 @@ This project uses a `swagger.json` file for all functions and loads Swagger UI f
 
 Send a `POST` request with a JSON body:
 ```bash
-curl -X POST http://localhost:8888/encode-base64 \
+curl -X POST http://localhost:8888/encode/base64 \
   -H "Content-Type: application/json" \
-  -d '{"name":"test"}'
+  -d '{"value":"test"}'
 ```
 
 Response:
 ```json
-{"name":"test","base64":"dGVzdA=="}
+{"encoded":"dGVzdA=="}
 ```

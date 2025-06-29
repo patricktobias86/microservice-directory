@@ -13,7 +13,7 @@ exports.handler = async function(event, context) {
       };
     }
     const encoded = encodeURIComponent(text);
-    const response = { ...data, encoded };
+    const response = { encoded };
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json' },

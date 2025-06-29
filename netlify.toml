@@ -2,37 +2,37 @@
   functions = "netlify/functions"
 
 [[redirects]]
-  from = "/encode-base64"
+  from = "/encode/base64"
   to = "/.netlify/functions/encode-base64"
   status = 200
   methods = ["GET", "POST", "OPTIONS"]
 
 [[redirects]]
-  from = "/decode-base64"
+  from = "/decode/base64"
   to = "/.netlify/functions/decode-base64"
   status = 200
   methods = ["GET", "POST", "OPTIONS"]
 
 [[redirects]]
-  from = "/hash-md5"
+  from = "/utilities/hash/md5"
   to = "/.netlify/functions/hash-md5"
   status = 200
   methods = ["GET", "POST", "OPTIONS"]
 
 [[redirects]]
-  from = "/encode-url"
+  from = "/encode/url"
   to = "/.netlify/functions/encode-url"
   status = 200
   methods = ["GET", "POST", "OPTIONS"]
 
 [[redirects]]
-  from = "/decode-url"
+  from = "/decode/url"
   to = "/.netlify/functions/decode-url"
   status = 200
   methods = ["GET", "POST", "OPTIONS"]
 
 [[redirects]]
-  from = "/generate-uuid"
+  from = "/utilities/uuid"
   to = "/.netlify/functions/generate-uuid"
   status = 200
   methods = ["GET", "POST", "OPTIONS"]
