@@ -1,0 +1,659 @@
+{
+	"info": {
+		"_postman_id": "7eb66284-1f37-4d97-b5e1-662bb67c289c",
+		"name": "Collection",
+		"description": "Small free APIs for anyone to use, hosted on Netlify.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "27658409-7eb66284-1f37-4d97-b5e1-662bb67c289c"
+	},
+	"item": [
+		{
+			"name": "decode-base64",
+			"item": [
+				{
+					"name": "Reads a JSON payload with a \"base64\" field and returns the original payload",
+					"id": "399a7c51-b152-454f-a185-77d4cd049e95",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"base64\": \"dGVzdA==\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/decode-base64",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"decode-base64"
+							]
+						},
+						"description": "Reads a JSON payload with a \"base64\" field and returns the original payload"
+					},
+					"response": [
+						{
+							"id": "8ee3169a-a202-43e9-91e6-9050c4167740",
+							"name": "Successful response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"base64\": \"dGVzdA==\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/decode-base64",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"decode-base64"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": []
+						},
+						{
+							"id": "f11d88ea-a4da-442e-b33d-c865f6d624b6",
+							"name": "Invalid request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"base64\": \"dGVzdA==\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/decode-base64",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"decode-base64"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": []
+						}
+					]
+				}
+			],
+			"id": "ecbef7ab-2689-43cc-8902-41c488c7ca2c"
+		},
+		{
+			"name": "decode-url",
+			"item": [
+				{
+					"name": "Decodes a URL encoded string from the \"encoded\" field and returns it as \"decoded\".",
+					"id": "18a5950b-511f-4db7-bfc9-19571a650a7f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"encoded\": \"https%3A%2F%2Fmicroservice-directory.netlify.app\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/decode-url",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"decode-url"
+							]
+						},
+						"description": "Decodes a URL encoded string from the \"encoded\" field and returns it as \"decoded\"."
+					},
+					"response": [
+						{
+							"id": "f3ce0139-fecf-489f-b725-d866196b25bf",
+							"name": "Successful response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"encoded\": \"https%3A%2F%2Fmicroservice-directory.netlify.app\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/decode-url",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"decode-url"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": []
+						},
+						{
+							"id": "c0b49c4b-2a15-4ceb-b228-a3da541ff5d5",
+							"name": "Invalid request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"encoded\": \"https%3A%2F%2Fmicroservice-directory.netlify.app\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/decode-url",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"decode-url"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": []
+						}
+					]
+				}
+			],
+			"id": "72cd2789-5009-4c0f-b3ac-2538107b81c1"
+		},
+		{
+			"name": "encode-base64",
+			"item": [
+				{
+					"name": "A Netlify serverless function that reads a JSON payload with a \"name\" field",
+					"id": "f1408084-6970-43ee-871e-2754f75f2c8d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"test\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/encode-base64",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"encode-base64"
+							]
+						},
+						"description": "A Netlify serverless function that reads a JSON payload with a \"name\" field"
+					},
+					"response": [
+						{
+							"id": "fdfa74af-5d6a-45cc-98cc-35a3eee6ae6f",
+							"name": "Successful response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"test\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/encode-base64",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"encode-base64"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": []
+						},
+						{
+							"id": "8cbd6311-226f-408d-8a1f-493bceb757c6",
+							"name": "Invalid request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"test\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/encode-base64",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"encode-base64"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": []
+						}
+					]
+				}
+			],
+			"id": "be1d47d3-2a27-435c-8e47-810d325602b3"
+		},
+		{
+			"name": "encode-url",
+			"item": [
+				{
+					"name": "URL encodes the provided \"text\" field and returns it as \"encoded\".",
+					"id": "384c3341-84e9-4db0-bc4e-54cdea90bac9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\": \"https://microservice-directory.netlify.app\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/encode-url",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"encode-url"
+							]
+						},
+						"description": "URL encodes the provided \"text\" field and returns it as \"encoded\"."
+					},
+					"response": [
+						{
+							"id": "0e0ddce2-f6f3-4308-837b-96b88283d9db",
+							"name": "Successful response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"text\": \"https://microservice-directory.netlify.app\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/encode-url",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"encode-url"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": []
+						},
+						{
+							"id": "91b86535-5568-4f91-8dc3-cb1c97158fce",
+							"name": "Invalid request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"text\": \"https://microservice-directory.netlify.app\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/encode-url",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"encode-url"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": []
+						}
+					]
+				}
+			],
+			"id": "03d2adcb-c9d9-4e47-b78f-b314c9bede05"
+		},
+		{
+			"name": "generate-uuid",
+			"item": [
+				{
+					"name": "Generates a random UUID v4 and returns it in a JSON response.",
+					"id": "6b0339f3-4702-41d0-b5db-20bd020543a4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/generate-uuid",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"generate-uuid"
+							]
+						},
+						"description": "Generates a random UUID v4 and returns it in a JSON response."
+					},
+					"response": [
+						{
+							"id": "847a5026-6241-4356-b0fd-87cd63387d11",
+							"name": "Successful response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/generate-uuid",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"generate-uuid"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": []
+						}
+					]
+				}
+			],
+			"id": "6a9d0f15-478e-4c6f-8e84-423842dcd2c7"
+		},
+		{
+			"name": "hash-md5",
+			"item": [
+				{
+					"name": "Returns the MD5 hash of a given \"text\" field from the JSON payload.",
+					"id": "cbcf066d-03d6-4dff-8871-7019719eade4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\": \"https://microservice-directory.netlify.app\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/hash-md5",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"hash-md5"
+							]
+						},
+						"description": "Returns the MD5 hash of a given \"text\" field from the JSON payload."
+					},
+					"response": [
+						{
+							"id": "3e29260e-a1b7-499b-9c44-645f1888f278",
+							"name": "Successful response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"text\": \"https://microservice-directory.netlify.app\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/hash-md5",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"hash-md5"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": []
+						},
+						{
+							"id": "d29bafec-fe11-4cc2-86ab-33de3a1aa3b7",
+							"name": "Invalid request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"text\": \"https://microservice-directory.netlify.app\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/hash-md5",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"hash-md5"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": []
+						}
+					]
+				}
+			],
+			"id": "753371d6-b45c-46a9-b918-d89dac44e1bd"
+		}
+	],
+	"variable": [
+		{
+			"id": "6bd1ea71-8217-4ba9-8da7-29da85244fe3",
+			"key": "baseUrl",
+			"value": "https://microservice-directory.netlify.app"
+		}
+	]
+}
