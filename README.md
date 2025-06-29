@@ -24,7 +24,13 @@ This project uses a `swagger.json` file for all functions and loads Swagger UI f
    npm install
    ```
 
-3. Run locally:
+3. (Optional) Create a `.env` file with a `RATE_LIMIT_RPS` value to limit
+   requests per second. Example:
+   ```bash
+   echo "RATE_LIMIT_RPS=5" > .env
+   ```
+
+4. Run locally:
    ```bash
    netlify dev
    ```
@@ -43,3 +49,9 @@ Response:
 ```json
 {"encoded":"dGVzdA=="}
 ```
+
+## Rate Limiting
+
+If `RATE_LIMIT_RPS` is set in the `.env` file, all functions enforce the
+specified number of requests per second. When the limit is exceeded, functions
+return HTTP `429` with `{ "error": "Too many requests" }`.

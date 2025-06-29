@@ -5,7 +5,16 @@
  * and returns a JSON object with an "encoded" field containing the Base64
  * (UTF-8) encoding of that value.
  */
+const checkRateLimit = require('./rate-limit');
+
 exports.handler = async function(event, context) {
+  if (!checkRateLimit()) {
+    return {
+      statusCode: 429,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ error: 'Too many requests' }),
+    };
+  }
   try {
     const data = JSON.parse(event.body || '{}');
     const value = data.value;

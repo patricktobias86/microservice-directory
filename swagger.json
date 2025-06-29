@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "Small free APIs for anyone to use, hosted on Netlify.",
+    "description": "Small free APIs for anyone to use, hosted on Netlify. Requests may be rate limited using the RATE_LIMIT_RPS environment variable.",
     "title": "Microservice Directory",
     "version": "1.0.0"
   },
