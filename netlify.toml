@@ -36,3 +36,27 @@
   to = "/.netlify/functions/generate-uuid"
   status = 200
   methods = ["GET", "POST", "OPTIONS"]
+
+[[redirects]]
+  from = "/encode/hex"
+  to = "/.netlify/functions/encode-hex"
+  status = 200
+  methods = ["GET", "POST", "OPTIONS"]
+
+[[redirects]]
+  from = "/decode/hex"
+  to = "/.netlify/functions/decode-hex"
+  status = 200
+  methods = ["GET", "POST", "OPTIONS"]
+
+[[redirects]]
+  from = "/utilities/hash/sha256"
+  to = "/.netlify/functions/hash-sha256"
+  status = 200
+  methods = ["GET", "POST", "OPTIONS"]
+
+[[redirects]]
+  from = "/utilities/timestamp"
+  to = "/.netlify/functions/timestamp"
+  status = 200
+  methods = ["GET", "POST", "OPTIONS"]
