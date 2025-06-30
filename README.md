@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e63407ac-f5f2-4d43-b67b-9a33518dbafc/deploy-status)](https://app.netlify.com/projects/microservice-directory/deploys)
+
 # Microservice Directory
 
 A set of simple serverless APIs hosted on Netlify.
