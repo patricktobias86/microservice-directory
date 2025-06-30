@@ -111,6 +111,56 @@
         "summary": "URL-decode the provided string"
       }
     },
+    "/decode/hex": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/HexDecodeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Decoded string",
+            "examples": {
+              "application/json": {
+                "decoded": "test"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/HexDecodeResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "429": {
+            "description": "Too many requests",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "tags": [
+          "decode"
+        ],
+        "operationId": "decodeHex",
+        "summary": "Decode a hex string"
+      }
+    },
     "/encode/base64": {
       "post": {
         "consumes": [
@@ -211,6 +261,56 @@
         "summary": "URL-encode the provided text"
       }
     },
+    "/encode/hex": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/HexEncodeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Hex encoded string",
+            "examples": {
+              "application/json": {
+                "encoded": "74657374"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/HexEncodeResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "429": {
+            "description": "Too many requests",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "tags": [
+          "encode"
+        ],
+        "operationId": "encodeHex",
+        "summary": "Encode a string to hex"
+      }
+    },
     "/utilities/hash/md5": {
       "post": {
         "consumes": [
@@ -261,6 +361,56 @@
         "summary": "Compute MD5 hash of a text string"
       }
     },
+    "/utilities/hash/sha256": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Sha256HashRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SHA-256 hash of the input",
+            "examples": {
+              "application/json": {
+                "hash": "2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Sha256HashResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "429": {
+            "description": "Too many requests",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "tags": [
+          "utilities"
+        ],
+        "operationId": "hashSha256",
+        "summary": "Compute SHA-256 hash of a text string"
+      }
+    },
     "/utilities/uuid": {
       "get": {
         "produces": [
@@ -285,6 +435,32 @@
         ],
         "operationId": "generateUuid",
         "summary": "Generate a random UUID v4"
+      }
+    },
+    "/utilities/timestamp": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Current timestamp",
+            "examples": {
+              "application/json": {
+                "timestamp": "2023-01-01T00:00:00.000Z"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/TimestampResponse"
+            }
+          }
+        },
+        "tags": [
+          "utilities"
+        ],
+        "operationId": "getTimestamp",
+        "summary": "Return the current timestamp in ISO format"
       }
     }
   },
@@ -436,6 +612,90 @@
       },
       "required": [
         "uuid"
+      ],
+      "type": "object"
+    },
+    "HexEncodeRequest": {
+      "properties": {
+        "value": {
+          "example": "test",
+          "type": "string"
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "type": "object"
+    },
+    "HexEncodeResponse": {
+      "properties": {
+        "encoded": {
+          "example": "74657374",
+          "type": "string"
+        }
+      },
+      "required": [
+        "encoded"
+      ],
+      "type": "object"
+    },
+    "HexDecodeRequest": {
+      "properties": {
+        "value": {
+          "example": "74657374",
+          "type": "string"
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "type": "object"
+    },
+    "HexDecodeResponse": {
+      "properties": {
+        "decoded": {
+          "example": "test",
+          "type": "string"
+        }
+      },
+      "required": [
+        "decoded"
+      ],
+      "type": "object"
+    },
+    "Sha256HashRequest": {
+      "properties": {
+        "text": {
+          "example": "hello",
+          "type": "string"
+        }
+      },
+      "required": [
+        "text"
+      ],
+      "type": "object"
+    },
+    "Sha256HashResponse": {
+      "properties": {
+        "hash": {
+          "example": "2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824",
+          "type": "string"
+        }
+      },
+      "required": [
+        "hash"
+      ],
+      "type": "object"
+    },
+    "TimestampResponse": {
+      "properties": {
+        "timestamp": {
+          "example": "2023-01-01T00:00:00.000Z",
+          "type": "string"
+        }
+      },
+      "required": [
+        "timestamp"
       ],
       "type": "object"
     }

@@ -3,6 +3,7 @@
 A set of simple serverless APIs hosted on Netlify.
 
 `/encode/base64` takes a JSON input with a `value` field and returns a response with an `encoded` field containing the Base64 (UTF-8) encoding of that value.
+Additional endpoints cover Base64 decoding, URL encoding/decoding, hex encoding/decoding, hashing, UUID generation and timestamps.
 
 This project uses a `swagger.json` file for all functions and loads Swagger UI from unpkg via `index.html`.
 
