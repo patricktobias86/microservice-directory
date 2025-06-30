@@ -4,7 +4,8 @@
   "description": "Small free APIs for anyone to use, hosted on Netlify.",
   "scripts": {
     "start": "netlify dev",
-    "deploy": "netlify deploy --prod"
+    "deploy": "netlify deploy --prod",
+    "test": "node --test"
   },
   "author": "",
   "license": "MIT",
