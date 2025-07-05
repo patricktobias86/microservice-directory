@@ -1,4 +1,4 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/e63407ac-f5f2-4d43-b67b-9a33518dbafc/deploy-status)](https://app.netlify.com/projects/microservice-directory/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e63407ac-f5f2-4d43-b67b-9a33518dbafc/deploy-status)](https://app.netlify.com/projects/microservice-directory/deploys) [![Swagger Validator](https://validator.swagger.io/validator?url=https%3A%2F%2Fmicroservice-directory.netlify.app%2Fswagger.json)](https://validator.swagger.io/validator/debug?url=https%3A%2F%2Fmicroservice-directory.netlify.app%2Fswagger.json)
 
 # Microservice Directory
 
