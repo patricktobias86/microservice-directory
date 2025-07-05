@@ -475,8 +475,8 @@
           "utilities"
         ],
         "operationId": "getTimestamp",
-        "summary": "Return the current timestamp in ISO and UNIX format",
-      }
+        "summary": "Return the current timestamp in ISO and UNIX format"
+    }
     },
     "/usage": {
       "get": {
