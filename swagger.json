@@ -442,17 +442,32 @@
         "produces": [
           "application/json"
         ],
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "timezone",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "IANA time zone name. Defaults to UTC."
+          }
+        ],
         "responses": {
           "200": {
             "description": "Current timestamp",
             "examples": {
               "application/json": {
-                "timestamp": "2023-01-01T00:00:00.000Z"
+                "iso": "2023-01-01T00:00:00+00:00",
+                "unix": 1672531200
               }
             },
             "schema": {
               "$ref": "#/definitions/TimestampResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid timezone",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
             }
           }
         },
@@ -460,7 +475,7 @@
           "utilities"
         ],
         "operationId": "getTimestamp",
-        "summary": "Return the current timestamp in ISO format"
+        "summary": "Return the current timestamp in ISO and UNIX format",
       }
     },
     "/usage": {
@@ -719,13 +734,18 @@
     },
     "TimestampResponse": {
       "properties": {
-        "timestamp": {
-          "example": "2023-01-01T00:00:00.000Z",
+        "iso": {
+          "example": "2023-01-01T00:00:00+00:00",
           "type": "string"
+        },
+        "unix": {
+          "example": 1672531200,
+          "type": "integer"
         }
       },
       "required": [
-        "timestamp"
+        "iso",
+        "unix"
       ],
       "type": "object"
     }
