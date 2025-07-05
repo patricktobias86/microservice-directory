@@ -7,6 +7,7 @@ const encodeUrl = require('../netlify/functions/encode-url.js');
 const decodeUrl = require('../netlify/functions/decode-url.js');
 const hashMd5 = require('../netlify/functions/hash-md5.js');
 const generateUuid = require('../netlify/functions/generate-uuid.js');
+const timestamp = require('../netlify/functions/timestamp.js');
 const stats = require('../netlify/functions/stats.js');
 
 // Test encodeBase64
@@ -61,6 +62,22 @@ test('generateUuid returns a uuid v4', async () => {
   assert.strictEqual(res.statusCode, 200);
   const body = JSON.parse(res.body);
   assert.match(body.uuid, /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i);
+});
+
+// Test timestamp
+test('timestamp returns iso and unix for timezone', async () => {
+  const event = { queryStringParameters: { timezone: 'UTC' } };
+  const res = await timestamp.handler(event);
+  assert.strictEqual(res.statusCode, 200);
+  const body = JSON.parse(res.body);
+  assert.ok(body.iso.endsWith('+00:00'));
+  assert.ok(Number.isInteger(body.unix));
+});
+
+test('timestamp rejects invalid timezone', async () => {
+  const event = { queryStringParameters: { timezone: 'Invalid/Zone' } };
+  const res = await timestamp.handler(event);
+  assert.strictEqual(res.statusCode, 400);
 });
 
 // Test usage stats
