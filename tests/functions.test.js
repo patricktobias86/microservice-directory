@@ -9,6 +9,7 @@ const hashMd5 = require('../netlify/functions/hash-md5.js');
 const generateUuid = require('../netlify/functions/generate-uuid.js');
 const timestamp = require('../netlify/functions/timestamp.js');
 const stats = require('../netlify/functions/stats.js');
+const fs = require('fs');
 
 // Test encodeBase64
 test('encodeBase64 encodes text to base64', async () => {
@@ -87,4 +88,17 @@ test('stats endpoint returns usage counts', async () => {
   assert.strictEqual(res.statusCode, 200);
   const body = JSON.parse(res.body);
   assert.ok(body.encodeBase64 >= 1);
+});
+
+// Validate swagger.json with online Swagger validator
+test('swagger.json is valid', async () => {
+  const schema = fs.readFileSync('./swagger.json', 'utf8');
+  const res = await fetch('https://validator.swagger.io/validator/debug', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: schema
+  });
+  assert.strictEqual(res.status, 200);
+  const body = await res.json();
+  assert.deepStrictEqual(body, { schemaValidationMessages: [] });
 });
