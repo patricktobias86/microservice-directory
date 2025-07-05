@@ -4,6 +4,7 @@
  */
 const crypto = require('crypto');
 const checkRateLimit = require('./rate-limit');
+const { record } = require('./usage');
 
 exports.handler = async function(event) {
   if (!checkRateLimit()) {
@@ -13,6 +14,7 @@ exports.handler = async function(event) {
       body: JSON.stringify({ error: 'Too many requests' })
     };
   }
+  record('hashSha256');
   try {
     const data = JSON.parse(event.body || '{}');
     const text = data.text;

@@ -1,11 +1,5 @@
-// netlify/functions/generate-uuid.js
-/**
- * Generates a random UUID v4 and returns it in a JSON response.
- */
-const { randomUUID } = require('crypto');
-
 const checkRateLimit = require('./rate-limit');
-const { record } = require('./usage');
+const { getStats } = require('./usage');
 
 exports.handler = async function() {
   if (!checkRateLimit()) {
@@ -15,11 +9,9 @@ exports.handler = async function() {
       body: JSON.stringify({ error: 'Too many requests' })
     };
   }
-  record('generateUuid');
-  const uuid = randomUUID();
   return {
     statusCode: 200,
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ uuid })
+    body: JSON.stringify(getStats())
   };
 };

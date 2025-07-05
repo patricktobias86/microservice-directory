@@ -7,6 +7,7 @@ const encodeUrl = require('../netlify/functions/encode-url.js');
 const decodeUrl = require('../netlify/functions/decode-url.js');
 const hashMd5 = require('../netlify/functions/hash-md5.js');
 const generateUuid = require('../netlify/functions/generate-uuid.js');
+const stats = require('../netlify/functions/stats.js');
 
 // Test encodeBase64
 test('encodeBase64 encodes text to base64', async () => {
@@ -60,4 +61,13 @@ test('generateUuid returns a uuid v4', async () => {
   assert.strictEqual(res.statusCode, 200);
   const body = JSON.parse(res.body);
   assert.match(body.uuid, /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i);
+});
+
+// Test usage stats
+test('stats endpoint returns usage counts', async () => {
+  await encodeBase64.handler({ body: JSON.stringify({ value: 'check' }) });
+  const res = await stats.handler();
+  assert.strictEqual(res.statusCode, 200);
+  const body = JSON.parse(res.body);
+  assert.ok(body.encodeBase64 >= 1);
 });

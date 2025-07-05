@@ -3,6 +3,7 @@
  * Decodes a hex string provided in the "value" field and returns it as "decoded".
  */
 const checkRateLimit = require('./rate-limit');
+const { record } = require('./usage');
 
 exports.handler = async function(event) {
   if (!checkRateLimit()) {
@@ -12,6 +13,7 @@ exports.handler = async function(event) {
       body: JSON.stringify({ error: 'Too many requests' })
     };
   }
+  record('decodeHex');
   try {
     const data = JSON.parse(event.body || '{}');
     const value = data.value;

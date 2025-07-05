@@ -3,6 +3,7 @@
  * URL encodes the provided "text" field and returns it as "encoded".
  */
 const checkRateLimit = require('./rate-limit');
+const { record } = require('./usage');
 
 exports.handler = async function(event, context) {
   if (!checkRateLimit()) {
@@ -12,6 +13,7 @@ exports.handler = async function(event, context) {
       body: JSON.stringify({ error: 'Too many requests' })
     };
   }
+  record('encodeUrl');
   try {
     const data = JSON.parse(event.body || '{}');
     const text = data.text;

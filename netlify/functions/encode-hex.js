@@ -3,6 +3,7 @@
  * Converts the provided "value" field to a hex string and returns it as "encoded".
  */
 const checkRateLimit = require('./rate-limit');
+const { record } = require('./usage');
 
 exports.handler = async function(event) {
   if (!checkRateLimit()) {
@@ -12,6 +13,7 @@ exports.handler = async function(event) {
       body: JSON.stringify({ error: 'Too many requests' })
     };
   }
+  record('encodeHex');
   try {
     const data = JSON.parse(event.body || '{}');
     const value = data.value;
