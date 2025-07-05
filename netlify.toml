@@ -63,7 +63,7 @@
 
 [[redirects]]
   from = "/usage"
-  to = "/.netlify/functions/usage"
+  to = "/.netlify/functions/stats"
   status = 200
   methods = ["GET", "POST", "OPTIONS"]
   
