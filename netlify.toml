@@ -60,3 +60,10 @@
   to = "/.netlify/functions/timestamp"
   status = 200
   methods = ["GET", "POST", "OPTIONS"]
+
+[[redirects]]
+  from = "/usage"
+  to = "/.netlify/functions/usage"
+  status = 200
+  methods = ["GET", "POST", "OPTIONS"]
+  
