@@ -1,7 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const statsFile = path.join(__dirname, '..', 'usage.json');
+// Store usage data in the same directory so it is packaged with each function
+const statsFile = path.join(__dirname, 'usage.json');
 
 let stats = {};
 try {
