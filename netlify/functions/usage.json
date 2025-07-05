@@ -1,0 +1,9 @@
+{
+  "encodeBase64": 2,
+  "decodeBase64": 1,
+  "encodeUrl": 1,
+  "decodeUrl": 1,
+  "hashMd5": 1,
+  "generateUuid": 1,
+  "timestamp": 2
+}
