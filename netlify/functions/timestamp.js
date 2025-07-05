@@ -3,6 +3,7 @@
  * Returns the current timestamp in ISO 8601 format.
  */
 const checkRateLimit = require('./rate-limit');
+const { record } = require('./usage');
 
 exports.handler = async function() {
   if (!checkRateLimit()) {
@@ -12,6 +13,7 @@ exports.handler = async function() {
       body: JSON.stringify({ error: 'Too many requests' })
     };
   }
+  record('timestamp');
   const timestamp = new Date().toISOString();
   return {
     statusCode: 200,

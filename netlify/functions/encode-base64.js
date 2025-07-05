@@ -6,6 +6,7 @@
  * (UTF-8) encoding of that value.
  */
 const checkRateLimit = require('./rate-limit');
+const { record } = require('./usage');
 
 exports.handler = async function(event, context) {
   if (!checkRateLimit()) {
@@ -15,6 +16,7 @@ exports.handler = async function(event, context) {
       body: JSON.stringify({ error: 'Too many requests' }),
     };
   }
+  record('encodeBase64');
   try {
     const data = JSON.parse(event.body || '{}');
     const value = data.value;

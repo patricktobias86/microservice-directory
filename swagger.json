@@ -462,6 +462,36 @@
         "operationId": "getTimestamp",
         "summary": "Return the current timestamp in ISO format"
       }
+    },
+    "/usage": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Usage statistics",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "integer"
+              }
+            }
+          },
+          "429": {
+            "description": "Too many requests",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "tags": [
+          "utilities"
+        ],
+        "operationId": "getUsage",
+        "summary": "Return counts of each API call"
+      }
     }
   },
   "definitions": {
